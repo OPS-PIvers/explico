@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ModalContent, ModalContentType, QuizQuestion } from '../types';
 import CloseIcon from './icons/CloseIcon';
@@ -56,7 +55,7 @@ const QuizView: React.FC<{ questions: QuizQuestion[] }> = ({ questions }) => {
                     <button
                         key={index}
                         onClick={() => handleAnswer(index)}
-                        className={`w-full text-left p-3 rounded-md transition-colors ${selectedAnswer === null ? 'bg-gray-600 hover:bg-cyan-700' : ''} ${selectedAnswer !== null && index === question.correctAnswerIndex ? 'bg-green-600' : ''} ${selectedAnswer !== null && selectedAnswer === index && index !== question.correctAnswerIndex ? 'bg-red-600' : 'bg-gray-600'}`}
+                        className={`w-full text-left p-3 rounded-md transition-colors ${selectedAnswer === null ? 'bg-[#666666] hover:bg-[#4356a0]' : ''} ${selectedAnswer !== null && index === question.correctAnswerIndex ? 'bg-[#2e8540]' : ''} ${selectedAnswer !== null && selectedAnswer === index && index !== question.correctAnswerIndex ? 'bg-[#ad2122]' : 'bg-[#666666]'}`}
                         disabled={selectedAnswer !== null}
                     >
                         {option}
@@ -65,7 +64,7 @@ const QuizView: React.FC<{ questions: QuizQuestion[] }> = ({ questions }) => {
             </div>
             {feedback && <p className="mt-4 text-center">{feedback}</p>}
             {selectedAnswer !== null && (
-                <button onClick={handleNext} className="mt-6 w-full bg-cyan-600 hover:bg-cyan-500 p-3 rounded-md font-bold">
+                <button onClick={handleNext} className="mt-6 w-full bg-[#ad2122] hover:bg-[#c13435] p-3 rounded-md font-bold transition-colors">
                     {currentQuestionIndex < questions.length - 1 ? 'Next Question' : 'Finish Quiz'}
                 </button>
             )}
@@ -119,14 +118,14 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, content }) => {
       onClick={onClose}
     >
       <div
-        className="bg-gray-800 rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 relative"
+        className="bg-[#1a1a1a] border-2 border-[#2d3f89] rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 relative"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-start mb-4">
-          <h2 className="text-2xl font-bold text-cyan-400">{content.title}</h2>
+          <h2 className="text-2xl font-bold text-[#2d3f89]">{content.title}</h2>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-white transition-colors"
+            className="text-gray-400 hover:text-[#ad2122] transition-colors"
           >
             <CloseIcon className="w-8 h-8" />
           </button>

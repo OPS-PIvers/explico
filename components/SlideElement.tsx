@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { SlideElement, DeviceType, ElementInteraction, SlideElementType, HotspotElement, TextElement, ImageElement, ButtonElement } from '../types';
 
@@ -18,11 +17,15 @@ const SlideElementComponent: React.FC<SlideElementProps> = ({ element, deviceTyp
   const renderElementContent = () => {
     switch (element.type) {
       case SlideElementType.Hotspot: {
-        const pulseColor = (element as HotspotElement).content.pulseColor || 'cyan';
-        const animationClass = `animate-pulse border-2 border-${pulseColor}-400`;
+        const pulseColor = (element as HotspotElement).content.pulseColor || '#ad2122'; // Primary Red
         return (
           <div
-            className={`w-full h-full rounded-full bg-${pulseColor}-400 bg-opacity-40 ${animationClass} cursor-pointer`}
+            className={`w-full h-full rounded-full animate-pulse-strong cursor-pointer`}
+            style={{
+              borderColor: pulseColor,
+              borderWidth: '2px',
+              backgroundColor: `${pulseColor}66` // 40% opacity
+            }}
           ></div>
         );
       }
@@ -53,7 +56,7 @@ const SlideElementComponent: React.FC<SlideElementProps> = ({ element, deviceTyp
       case SlideElementType.Button: {
         const content = (element as ButtonElement).content;
         return (
-            <button className="w-full h-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-lg text-xl transition-colors">
+            <button className="w-full h-full bg-[#ad2122] hover:bg-[#c13435] text-white font-bold rounded-lg text-xl transition-all transform hover:scale-105 shadow-lg hover:shadow-xl shadow-black/30">
                 {content.text}
             </button>
         );

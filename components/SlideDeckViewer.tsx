@@ -105,7 +105,7 @@ const SlideDeckViewer: React.FC<SlideDeckViewerProps> = ({ deck }) => {
   };
 
   return (
-    <div ref={slideContainerRef} className="w-full max-w-7xl aspect-video relative flex flex-col items-center justify-center bg-black rounded-lg shadow-2xl shadow-cyan-500/10 overflow-hidden">
+    <div ref={slideContainerRef} className="w-full max-w-7xl aspect-video relative flex flex-col items-center justify-center bg-black rounded-lg shadow-2xl shadow-[#ad2122]/30 overflow-hidden">
       <div
         className="w-full h-full"
         style={{
@@ -157,25 +157,25 @@ const SlideDeckViewer: React.FC<SlideDeckViewerProps> = ({ deck }) => {
       )}
 
       {/* Navigation Controls */}
-      <div className="absolute inset-0 flex justify-between items-center pointer-events-none z-10">
+      <div className="absolute inset-0 flex justify-between items-center pointer-events-none z-20">
         <button
           onClick={goToPrevSlide}
-          className="pointer-events-auto m-4 bg-black bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 text-white transition-opacity"
+          className="pointer-events-auto m-4 text-[#ad2122] hover:text-[#c13435] transition-all transform hover:scale-125"
           aria-label="Previous Slide"
         >
-          <ChevronLeftIcon className="w-6 h-6 md:w-8 md:h-8" />
+          <ChevronLeftIcon className="w-8 h-8 md:w-10 md:h-10" />
         </button>
         <button
           onClick={goToNextSlide}
-          className="pointer-events-auto m-4 bg-black bg-opacity-50 hover:bg-opacity-75 rounded-full p-2 text-white transition-opacity"
+          className="pointer-events-auto m-4 text-[#ad2122] hover:text-[#c13435] transition-all transform hover:scale-125"
           aria-label="Next Slide"
         >
-          <ChevronRightIcon className="w-6 h-6 md:w-8 md:h-8" />
+          <ChevronRightIcon className="w-8 h-8 md:w-10 md:h-10" />
         </button>
       </div>
 
       {/* Slide Indicator */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black bg-opacity-60 text-white text-sm px-3 py-1 rounded-full z-10">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-[#2d3f89] text-white text-sm px-3 py-1 rounded-full z-10">
         {currentSlideIndex + 1} / {deck.slides.length}
       </div>
 

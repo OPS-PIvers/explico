@@ -46,7 +46,7 @@ export const mockSlideDeck: SlideDeck = {
     {
       id: 'slide-2',
       title: 'Device Overview',
-      background: { type: 'color', value: '#1a202c' },
+      background: { type: 'color', value: '#1d2a5d' },
       elements: [
         {
           id: 's2-aed-image',
@@ -96,7 +96,7 @@ export const mockSlideDeck: SlideDeck = {
             tablet: { top: '55%', left: '25%', width: '12%', height: '18%' },
             mobile: { top: '58%', left: '20%', width: '15%', height: '20%' },
           },
-          content: { pulseColor: 'blue' },
+          content: { pulseColor: '#4356a0' }, // Accent Color 1: Blue Light
           interaction: {
             trigger: 'onClick',
             action: {
@@ -121,7 +121,7 @@ export const mockSlideDeck: SlideDeck = {
             tablet: { top: '35%', left: '67%', width: '7%', height: '10%' },
             mobile: { top: '38%', left: '68%', width: '10%', height: '12%' },
           },
-          content: { pulseColor: 'orange' },
+          content: { pulseColor: '#c13435' }, // Accent Color 2: Red Light
           interaction: {
             trigger: 'onClick',
             action: {
@@ -142,7 +142,7 @@ export const mockSlideDeck: SlideDeck = {
     {
       id: 'slide-3',
       title: 'Watch a Demo',
-      background: { type: 'color', value: '#111827' },
+      background: { type: 'color', value: '#1d2a5d' },
       elements: [
         {
           id: 's3-title',
