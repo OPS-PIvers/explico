@@ -114,23 +114,25 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, content }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+      className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-opacity duration-300"
       onClick={onClose}
     >
       <div
-        className="bg-[#1a1a1a] border-2 border-[#2d3f89] rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 relative"
+        className="bg-gradient-to-br from-[#1a1a1a] to-[#111111] border-2 border-[#ad2122]/50 rounded-xl shadow-2xl shadow-black/50 w-full max-w-3xl max-h-[90vh] overflow-y-auto p-6 relative flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex justify-between items-start mb-4">
-          <h2 className="text-2xl font-bold text-[#2d3f89]">{content.title}</h2>
+        <div className="flex justify-between items-center mb-4 flex-shrink-0">
+          <h2 className="text-2xl font-bold text-white">{content.title}</h2>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-[#ad2122] transition-colors"
+            className="text-gray-400 hover:text-white bg-white/10 hover:bg-white/20 rounded-full p-1 transition-colors"
           >
-            <CloseIcon className="w-8 h-8" />
+            <CloseIcon className="w-6 h-6" />
           </button>
         </div>
-        {renderContent()}
+        <div className="overflow-y-auto">
+          {renderContent()}
+        </div>
       </div>
     </div>
   );
