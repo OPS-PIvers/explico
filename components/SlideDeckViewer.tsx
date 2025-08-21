@@ -157,17 +157,17 @@ const SlideDeckViewer: React.FC<SlideDeckViewerProps> = ({ deck }) => {
       )}
 
       {/* Navigation Controls */}
-      <div className="absolute inset-0 flex justify-between items-center pointer-events-none z-20">
+      <div className="absolute top-1/2 -translate-y-1/2 w-full flex justify-between items-center px-4 z-20 pointer-events-none">
         <button
           onClick={goToPrevSlide}
-          className="pointer-events-auto m-4 text-[#ad2122] hover:text-[#c13435] transition-all transform hover:scale-125"
+          className="pointer-events-auto bg-black/30 hover:bg-black/50 text-white rounded-full p-2 transition-all transform hover:scale-110"
           aria-label="Previous Slide"
         >
           <ChevronLeftIcon className="w-8 h-8 md:w-10 md:h-10" />
         </button>
         <button
           onClick={goToNextSlide}
-          className="pointer-events-auto m-4 text-[#ad2122] hover:text-[#c13435] transition-all transform hover:scale-125"
+          className="pointer-events-auto bg-black/30 hover:bg-black/50 text-white rounded-full p-2 transition-all transform hover:scale-110"
           aria-label="Next Slide"
         >
           <ChevronRightIcon className="w-8 h-8 md:w-10 md:h-10" />
@@ -175,8 +175,17 @@ const SlideDeckViewer: React.FC<SlideDeckViewerProps> = ({ deck }) => {
       </div>
 
       {/* Slide Indicator */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-[#2d3f89] text-white text-sm px-3 py-1 rounded-full z-10">
-        {currentSlideIndex + 1} / {deck.slides.length}
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center space-x-2 z-20">
+        {deck.slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlideIndex(index)}
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+              currentSlideIndex === index ? 'bg-white scale-110' : 'bg-white/40 hover:bg-white/75'
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
       </div>
 
       <Modal

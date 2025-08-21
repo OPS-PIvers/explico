@@ -17,16 +17,20 @@ const SlideElementComponent: React.FC<SlideElementProps> = ({ element, deviceTyp
   const renderElementContent = () => {
     switch (element.type) {
       case SlideElementType.Hotspot: {
-        const pulseColor = (element as HotspotElement).content.pulseColor || '#ad2122'; // Primary Red
+        const pulseColor = (element as HotspotElement).content.pulseColor || '#ad2122';
         return (
           <div
-            className={`w-full h-full rounded-full animate-pulse-strong cursor-pointer`}
+            className={`w-full h-full rounded-full cursor-pointer transition-all duration-300 animate-pulse-strong backdrop-blur-sm`}
             style={{
-              borderColor: pulseColor,
-              borderWidth: '2px',
-              backgroundColor: `${pulseColor}66` // 40% opacity
+              backgroundColor: `${pulseColor}4D`, // 30% opacity
+              border: `2px solid ${pulseColor}B3`, // 70% opacity
+              boxShadow: `0 0 15px 3px ${pulseColor}80` // 50% opacity glow
             }}
-          ></div>
+          >
+            <div className="w-full h-full rounded-full" style={{
+              boxShadow: `inset 0 0 10px ${pulseColor}B3` // Inner glow
+            }}></div>
+          </div>
         );
       }
       case SlideElementType.Text: {
@@ -56,7 +60,7 @@ const SlideElementComponent: React.FC<SlideElementProps> = ({ element, deviceTyp
       case SlideElementType.Button: {
         const content = (element as ButtonElement).content;
         return (
-            <button className="w-full h-full bg-[#ad2122] hover:bg-[#c13435] text-white font-bold rounded-lg text-xl transition-all transform hover:scale-105 shadow-lg hover:shadow-xl shadow-black/30">
+            <button className="w-full h-full bg-gradient-to-br from-[#ad2122] to-[#c13435] hover:from-[#c13435] hover:to-[#ad2122] text-white font-bold rounded-lg text-lg md:text-xl transition-all transform hover:scale-105 shadow-lg hover:shadow-xl shadow-black/40 border-2 border-white/20 hover:border-white/40">
                 {content.text}
             </button>
         );
@@ -68,6 +72,7 @@ const SlideElementComponent: React.FC<SlideElementProps> = ({ element, deviceTyp
 
   return (
     <div
+      id={element.id}
       style={positionStyle}
       className={`${baseClasses} ${visibilityClasses}`}
       onClick={() => element.interaction && onInteract(element.interaction)}
